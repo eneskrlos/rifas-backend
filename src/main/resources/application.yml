@@ -1,0 +1,86 @@
+# =============================================================
+#  SISTEMA DE RIFAS — Configuración principal
+#  Archivo: src/main/resources/application.yml
+# =============================================================
+
+spring:
+
+  application:
+    name: rifas-backend
+
+  # ── BASE DE DATOS ──────────────────────────────────────────
+  datasource:
+    url:      jdbc:postgresql://localhost:5432/rifas_db
+    username: rifas_user
+    password: rifas_pass_2025
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size:    10
+      minimum-idle:          2
+      connection-timeout: 30000
+      idle-timeout:       600000
+      max-lifetime:      1800000
+      pool-name: RifasHikariPool
+
+  # ── JPA / HIBERNATE ───────────────────────────────────────
+  jpa:
+    hibernate:
+      ddl-auto: validate          # Nunca 'create' en producción
+    show-sql: false               # true solo para debug puntual
+    properties:
+      hibernate:
+        format_sql: true
+        default_schema: public
+
+  # ── FLYWAY (migraciones automáticas) ──────────────────────
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+    baseline-version: 0
+    validate-on-migrate: true
+    out-of-order: false
+
+  # ── SERIALIZACIÓN JSON ─────────────────────────────────────
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone:   America/Montevideo
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
+
+# ── SERVIDOR ────────────────────────────────────────────────
+server:
+  port: 8080
+  servlet:
+    context-path: /api
+  error:
+    include-message: always
+    include-binding-errors: always
+
+# ── JWT ─────────────────────────────────────────────────────
+jwt:
+  secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+  expiration-ms: 86400000      # 24 horas
+  refresh-expiration-ms: 604800000  # 7 días
+
+# ── SPRINGDOC / SWAGGER UI ───────────────────────────────────
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path:           /swagger-ui.html
+    enabled:        true
+    tags-sorter:    alpha
+    display-request-duration: true
+
+# ── LOGGING ─────────────────────────────────────────────────
+logging:
+  level:
+    root:                          WARN
+    com.rifas:                     INFO
+    org.springframework.security:  WARN
+    org.flywaydb:                  INFO
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
