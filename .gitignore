@@ -1,0 +1,96 @@
+# =============================================================
+#  .gitignore — Sistema de Rifas (Spring Boot + Maven)
+# =============================================================
+
+# ── MAVEN ─────────────────────────────────────────────────────
+# Carpeta generada al compilar. Nunca se sube al repo.
+# Cada desarrollador la genera con: mvn clean install
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# ── SPRING BOOT ───────────────────────────────────────────────
+# Archivos de configuración con datos sensibles
+application-prod.yml
+application-local.yml
+
+# ── CREDENCIALES Y VARIABLES DE ENTORNO ──────────────────────
+# CRÍTICO: estos archivos contienen contraseñas y claves secretas
+# NUNCA deben subirse al repositorio
+.env
+.env.local
+.env.production
+*.env
+
+# ── INTELLIJ IDEA ─────────────────────────────────────────────
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+# Excepto el archivo de configuración del compilador (útil en equipos)
+!.idea/compiler.xml
+
+# ── ECLIPSE ───────────────────────────────────────────────────
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# ── VSCODE ────────────────────────────────────────────────────
+.vscode/
+*.code-workspace
+
+# ── SISTEMA OPERATIVO ─────────────────────────────────────────
+# MacOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encdata
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ── LOGS ──────────────────────────────────────────────────────
+*.log
+logs/
+log/
+
+# ── ARCHIVOS TEMPORALES Y DE TEST ─────────────────────────────
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+hs_err_pid*
+replay_pid*
+
+# ── DOCKER ────────────────────────────────────────────────────
+# Los volúmenes locales de Docker no se suben
+docker/volumes/
+
+# ── JAVA ──────────────────────────────────────────────────────
+# Archivos compilados
+*.class
+
+# Archivos de paquete
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# ── COBERTURA DE TESTS ────────────────────────────────────────
+.jacoco/
+jacoco.exec
