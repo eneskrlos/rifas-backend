@@ -98,6 +98,7 @@ public class AuthController {
     public ResponseEntity<ApiResponse<AuthResponse>> changePassword(
         @Valid @RequestBody ChangePasswordRequest request
     ){
+        log.info("Request: "+ request.getCurrentPassword());
         authService.changePassword(request);
         return ResponseEntity.ok(
             ApiResponse.ok("Contraseña cambiada exitosamente", null)
