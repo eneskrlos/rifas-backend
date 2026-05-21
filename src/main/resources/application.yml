@@ -31,7 +31,8 @@ spring:
       hibernate:
         format_sql: true
         default_schema: public
-
+    open-in-view: false
+  
   # ── FLYWAY (migraciones automáticas) ──────────────────────
   flyway:
     enabled: true
@@ -80,7 +81,7 @@ logging:
   level:
     root:                          WARN
     com.rifas:                     INFO
-    org.springframework.security:  WARN
+    org.springframework.security:  ERROR
     org.flywaydb:                  INFO
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

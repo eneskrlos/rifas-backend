@@ -177,6 +177,7 @@ public class AuthServiceImpl implements AuthService {
                 .getContext()
                 .getAuthentication()
                 .getName();
+        log.info("Usuario autenticado para cambio de contraseña: {}", username);
         Usuario usuario = usuarioRepository
                 .findByEmailOrTelefono(username, username)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado en BD"));

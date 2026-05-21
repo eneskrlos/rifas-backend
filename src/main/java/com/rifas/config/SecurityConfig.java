@@ -51,7 +51,8 @@ public class SecurityConfig {
      * Cualquier persona puede acceder sin autenticarse.
      */
     private static final String[] RUTAS_PUBLICAS = {
-            "/auth/**",              // login y registro
+            "/auth/login", // login con email/teléfono + contraseña
+            "/auth/register", // registro de nuevo participante
             "/swagger-ui/**",        // documentación Swagger UI
             "/swagger-ui.html",
             "/v3/api-docs/**",       // OpenAPI JSON
